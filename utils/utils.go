@@ -5,9 +5,10 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"encoding/hex"
-	"goRecrypt/curve"
-	"golang.org/x/crypto/sha3"
 	"math/big"
+
+	"github.com/kien-genetica/goRecrypt/curve"
+	"golang.org/x/crypto/sha3"
 )
 
 // concat bytes
@@ -29,7 +30,7 @@ func Sha3Hash(message []byte) ([]byte, error) {
 }
 
 // map hash value to curve
-func HashToCurve(hash []byte) (*big.Int) {
+func HashToCurve(hash []byte) *big.Int {
 	hashInt := new(big.Int).SetBytes(hash)
 	return hashInt.Mod(hashInt, curve.N)
 }

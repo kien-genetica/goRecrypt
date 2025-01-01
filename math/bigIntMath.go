@@ -1,8 +1,9 @@
 package math
 
 import (
-	"goRecrypt/curve"
 	"math/big"
+
+	"github.com/kien-genetica/goRecrypt/curve"
 )
 
 func BigIntAdd(a, b *big.Int) (res *big.Int) {

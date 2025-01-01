@@ -7,10 +7,11 @@ import (
 	"encoding/gob"
 	"encoding/hex"
 	"fmt"
-	"goRecrypt/curve"
-	"goRecrypt/math"
-	"goRecrypt/utils"
 	"math/big"
+
+	"github.com/kien-genetica/goRecrypt/curve"
+	"github.com/kien-genetica/goRecrypt/math"
+	"github.com/kien-genetica/goRecrypt/utils"
 )
 
 type Capsule struct {

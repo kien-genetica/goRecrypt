@@ -3,8 +3,9 @@ package main
 import (
 	"encoding/hex"
 	"fmt"
-	"goRecrypt/curve"
-	"goRecrypt/recrypt"
+
+	"github.com/kien-genetica/goRecrypt/curve"
+	"github.com/kien-genetica/goRecrypt/recrypt"
 )
 
 func main() {
