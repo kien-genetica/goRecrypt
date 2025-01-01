@@ -4,9 +4,11 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"math/big"
+
+	"github.com/ethereum/go-ethereum/crypto/secp256k1"
 )
 
-var CURVE = elliptic.P256()
+var CURVE = secp256k1.S256()
 var P = CURVE.Params().P
 var N = CURVE.Params().N
 

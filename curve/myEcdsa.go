@@ -4,17 +4,18 @@ import (
 	"bytes"
 	"compress/gzip"
 	"crypto/ecdsa"
-	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/x509"
 	"encoding/hex"
 	"math/big"
 	"strings"
+
+	"github.com/ethereum/go-ethereum/crypto/secp256k1"
 )
 
 // Generate Private and Public key-pair
 func GenerateKeys() (*ecdsa.PrivateKey, *ecdsa.PublicKey, error) {
-	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	privateKey, err := ecdsa.GenerateKey(secp256k1.S256(), rand.Reader)
 	if err != nil {
 		return nil, nil, err
 	}

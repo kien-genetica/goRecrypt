@@ -3,12 +3,12 @@ package recrypt
 import (
 	"bytes"
 	"crypto/ecdsa"
-	"crypto/elliptic"
 	"encoding/gob"
 	"encoding/hex"
 	"fmt"
 	"math/big"
 
+	"github.com/ethereum/go-ethereum/crypto/secp256k1"
 	"github.com/kien-genetica/goRecrypt/curve"
 	"github.com/kien-genetica/goRecrypt/math"
 	"github.com/kien-genetica/goRecrypt/utils"
@@ -288,7 +288,7 @@ func DecryptOnMyOwnStrKey(aPriKeyStr string, capsule *Capsule, cipherText []byte
 }
 
 func EncodeCapsule(capsule Capsule) (capsuleAsBytes []byte, err error) {
-	gob.Register(elliptic.P256())
+	gob.Register(secp256k1.S256())
 	buf := new(bytes.Buffer)
 	enc := gob.NewEncoder(buf)
 	if err = enc.Encode(capsule); err != nil {
@@ -299,7 +299,7 @@ func EncodeCapsule(capsule Capsule) (capsuleAsBytes []byte, err error) {
 
 func DecodeCapsule(capsuleAsBytes []byte) (capsule Capsule, err error) {
 	capsule = Capsule{}
-	gob.Register(elliptic.P256())
+	gob.Register(secp256k1.S256())
 	dec := gob.NewDecoder(bytes.NewBuffer(capsuleAsBytes))
 	if err = dec.Decode(&capsule); err != nil {
 		return capsule, err
